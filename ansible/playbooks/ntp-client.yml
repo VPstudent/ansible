@@ -1,0 +1,6 @@
+---
+- name: ntp install
+  hosts: ntp_client
+  become: yes
+  roles:
+    - /home/ansible/roles/ntp-client

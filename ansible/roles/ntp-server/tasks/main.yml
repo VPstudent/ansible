@@ -1,0 +1,31 @@
+---
+# tasks file for ntp-server
+- name: Installing chrony package
+  yum:
+    name: chrony
+    state: latest
+
+- name: Modifying file(allow network)
+  lineinfile: 
+    path: /etc/chrony.conf
+    regexp: '^#allow 192.168.1.0/24'
+    line: 'allow 192.168.1.0/24'
+
+- name: Uncomment
+  lineinfile:
+    path: /etc/chrony.conf
+    regexp: '^#local stratum 10'
+    line: '^local stratum 10'
+
+- name: Start and enable cronyd
+  service:
+    name: chronyd
+    state: started
+    enabled: yes
+
+- name: firewalld
+  firewalld:
+    service: ntp
+    permanent: yes
+    state: enabled
+    immediate: yes

@@ -1,0 +1,6 @@
+---
+- name: Running nagios roles/vadim.nagios-server
+  hosts: 192.168.1.212
+  become: yes
+  roles:
+    - /home/ansible/roles/vadim.nagios-server
