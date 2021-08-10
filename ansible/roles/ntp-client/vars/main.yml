@@ -1,0 +1,7 @@
+---
+# vars file for ntp-client
+number:
+  - 0
+  - 1
+  - 2
+  - 3

@@ -1,0 +1,6 @@
+---
+- name: Installing Mariadb Database with GUI
+  hosts: 192.168.1.211
+  become: yes
+  roles:
+    - /home/ansible/roles/vadim.mysql

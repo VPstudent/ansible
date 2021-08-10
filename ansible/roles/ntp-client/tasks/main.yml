@@ -1,0 +1,19 @@
+---
+# tasks file for ntp-client
+- name: install chrony
+  package:
+    name: chrony
+    state: latest
+    
+- name: remove servers from the file
+  lineinfile:
+    path: /etc/chrony.conf
+    regexp: '^server{{ item }}.centos.pool.ntp.org iburst'
+    line: '#^server{{ item }}.centos.pool.ntp.org iburst'
+  loop: "{{ number }}"  
+
+- name: chronyd
+  service:
+    name: chronyd
+    state: started
+    enabled: yes

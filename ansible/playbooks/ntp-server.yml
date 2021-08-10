@@ -1,0 +1,6 @@
+---
+- name: ntp install
+  hosts: ntp_server
+  become: yes
+  roles:
+    - /home/ansible/roles/ntp-server
